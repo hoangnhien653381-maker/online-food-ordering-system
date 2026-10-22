@@ -15,6 +15,7 @@
     <groupId>com.foodordering</groupId>
     <artifactId>online-food-ordering-system</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <name>Online Food Ordering System</name>
     <description>Online Food Ordering System - Lab 7</description>
 
@@ -23,9 +24,10 @@
     </properties>
 
     <dependencies>
+        <!-- Spring Web: xây dựng REST API -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
 
