@@ -1,70 +1,73 @@
-# Online Food Ordering System
+# Hệ thống đặt đồ ăn trực tuyến
 
 ## 1. Giới thiệu
 
-Online Food Ordering System là hệ thống đặt đồ ăn trực tuyến được xây dựng trong khuôn khổ bài thực hành Lab06 và Lab07.
+Hệ thống đặt đồ ăn trực tuyến được xây dựng nhằm hỗ trợ khách hàng tìm kiếm món ăn, quản lý giỏ hàng, đặt hàng và theo dõi trạng thái đơn hàng. Hệ thống cũng hướng đến hỗ trợ các nghiệp vụ xử lý đơn hàng của nhà hàng và giao hàng.
 
-Dự án hướng đến việc hỗ trợ khách hàng tìm kiếm món ăn, lựa chọn món, quản lý giỏ hàng, đặt hàng và theo dõi trạng thái đơn hàng. Hệ thống cũng hướng đến việc hỗ trợ nhà hàng xử lý đơn hàng, thanh toán và giao hàng theo phạm vi thiết kế của nhóm.
+Đây là dự án thực hành môn học, được phát triển theo các yêu cầu của Lab 7 về Software Implementation & Version Control (Git/GitHub).
 
-## 2. Mục tiêu Lab07
+## 2. Công nghệ sử dụng
 
-- Quản lý mã nguồn bằng Git và GitHub.
-- Áp dụng Git Flow trong quá trình phát triển phần mềm theo nhóm.
-- Xây dựng Skeleton Code dựa trên kiến trúc đã thiết kế ở Lab06.
-- Thực hành tạo nhánh, commit, push và Pull Request.
-- Thực hiện Code Review trước khi tích hợp mã nguồn.
-- Quản lý lịch sử phiên bản và tài liệu của dự án.
+- Ngôn ngữ lập trình: Java
+- Framework: Spring Boot
+- Công cụ quản lý dự án và thư viện: Maven
+- Quản lý mã nguồn: Git và GitHub
 
-## 3. Chức năng chính
+## 3. Kiến trúc hệ thống
 
-- Đăng ký và đăng nhập tài khoản.
-- Tìm kiếm và xem thông tin món ăn.
-- Quản lý giỏ hàng và đặt món.
-- Thanh toán và theo dõi trạng thái đơn hàng.
-- Hỗ trợ nhà hàng xử lý đơn hàng.
-- Hỗ trợ cập nhật trạng thái giao hàng.
+Dự án kế thừa kiến trúc ba lớp đã được thiết kế trong Lab 6:
 
-Các chức năng cụ thể sẽ được triển khai theo thiết kế và phạm vi đã thống nhất của nhóm.
+- Presentation Layer: tiếp nhận tương tác từ người dùng.
+- Business Layer: xử lý nghiệp vụ của hệ thống.
+- Data Access Layer: tổ chức các thao tác truy cập dữ liệu.
 
-## 4. Cấu trúc repository
+## 4. Cấu trúc dự án
 
 ```text
 online-food-ordering-system/
-├── README.md
-├── .gitignore
+├── src/
+│   └── main/
+│       └── java/
+│           └── com/
+│               └── foodordering/
+│                   ├── Application.java
+│                   ├── presentation/
+│                   ├── business/
+│                   │   ├── FoodService.java
+│                   │   └── OrderService.java
+│                   └── data/
+│                       └── OrderRepository.java
 ├── docs/
 │   ├── architecture.md
 │   ├── database-design.md
 │   └── ui-design.md
-├── backend/
-└── frontend/
+├── pom.xml
+└── README.md
 ```
 
-Đây là cấu trúc tổ chức dự kiến. Các thư mục và công nghệ cụ thể sẽ được điều chỉnh theo kiến trúc của dự án Lab06.
+## 5. Yêu cầu môi trường
 
-## 5. Quy trình Git Flow
+- JDK 17 trở lên, tương thích với cấu hình dự án.
+- Apache Maven hoặc Maven Wrapper nếu được bổ sung.
+- Git để quản lý phiên bản mã nguồn.
 
-- `main`: lưu phiên bản ổn định của dự án.
-- `develop`: tích hợp các chức năng đang phát triển.
-- `feature/*`: các nhánh phát triển chức năng riêng.
+## 6. Cách chạy dự án
 
-Thành viên tạo nhánh chức năng từ `develop`, thực hiện commit và push lên GitHub, sau đó tạo Pull Request vào `develop`. Mã nguồn được xem xét và kiểm tra trước khi merge.
+Tại thư mục gốc chứa file `pom.xml`, thực hiện:
 
-## 6. Tài liệu dự án
+```bash
+mvn clean package
+mvn spring-boot:run
+```
 
-Thư mục `docs/` dự kiến lưu các tài liệu:
+Hiện tại, dự án đang ở giai đoạn Skeleton Code, gồm lớp khởi động và một số lớp nghiệp vụ ban đầu. Các chức năng hoàn chỉnh, giao diện, kết nối cơ sở dữ liệu và xử lý đơn hàng thực tế sẽ được phát triển theo phạm vi dự án.
 
-- `architecture.md`: tài liệu kiến trúc hệ thống.
-- `database-design.md`: tài liệu thiết kế cơ sở dữ liệu.
-- `ui-design.md`: tài liệu thiết kế giao diện người dùng.
+## 7. Quản lý phiên bản
 
-## 7. Thành viên
+Nhóm sử dụng Git và GitHub để quản lý mã nguồn.
 
-- Nguyễn Hoàng Nhiên – 52400084
-- Lê Minh Muôn – 52200255
-- Trần Trung Hiếu – 52400047
-- Trần Văn Phú – 52100989
+- `main`: lưu phiên bản ổn định.
+- `develop`: tích hợp công việc phát triển.
+- `feature/*`: phát triển các chức năng riêng biệt.
 
-## 8. Phạm vi Lab07
-
-Lab07 tập trung vào quy trình triển khai phần mềm, quản lý phiên bản bằng Git/GitHub, xây dựng Skeleton Code, phối hợp phát triển thông qua Pull Request và thực hiện Code Review.
+Các thay đổi được tích hợp thông qua Pull Request và Code Review theo quy trình làm việc của nhóm.
