@@ -1,0 +1,18 @@
+{
+  "name": "food-ordering-auth",
+  "version": "1.0.0",
+  "description": "Module đăng ký và đăng nhập - Hệ thống đặt đồ ăn trực tuyến",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
+  }
+}
