@@ -1,0 +1,31 @@
+const express = require("express");
+const authService = require("./services/authService");
+
+const app = express();
+app.use(express.json());
+
+/* API đăng ký tài khoản */
+app.post("/api/auth/register", async (req, res) => {
+    try {
+        const { email, password } = req.body || {};
+        const user = await authService.register(email, password);
+        return res.status(201).json({ message: "Đăng ký thành công", user });
+    } catch (error) {
+        const status = error.statusCode || 500;
+        return res.status(status).json({ message: error.message });
+    }
+});
+
+/* API đăng nhập tài khoản */
+app.post("/api/auth/login", async (req, res) => {
+    try {
+        const { email, password } = req.body || {};
+        const user = await authService.login(email, password);
+        return res.status(200).json({ message: "Đăng nhập thành công", user });
+    } catch (error) {
+        const status = error.statusCode || 500;
+        return res.status(status).json({ message: error.message });
+    }
+});
+
+module.exports = app;
