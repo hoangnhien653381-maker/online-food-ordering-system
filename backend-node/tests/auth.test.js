@@ -43,6 +43,13 @@ describe("API Đăng ký / Đăng nhập", () => {
     expect(response.status).toBe(400);
   });
 
+  test("Từ chối mật khẩu chỉ gồm khoảng trắng", async () => {
+    const response = await request(app)
+      .post("/api/auth/register")
+      .send({ email: `spaces_${Date.now()}@example.com`, password: "        " });
+    expect(response.status).toBe(400);
+  });
+
   test("Từ chối email không hợp lệ", async () => {
     const response = await request(app)
       .post("/api/auth/register")
@@ -54,6 +61,22 @@ describe("API Đăng ký / Đăng nhập", () => {
     const response = await request(app)
       .post("/api/auth/register")
       .send({ email: `missing_${Date.now()}@example.com` });
+    expect(response.status).toBe(400);
+  });
+
+  test("Từ chối đăng nhập khi thiếu email", async () => {
+    const response = await request(app)
+      .post("/api/auth/login")
+      .send({ password });
+
+    expect(response.status).toBe(400);
+  });
+
+  test("Từ chối đăng nhập khi thiếu mật khẩu", async () => {
+    const response = await request(app)
+      .post("/api/auth/login")
+      .send({ email: "test@example.com" });
+
     expect(response.status).toBe(400);
   });
 });
