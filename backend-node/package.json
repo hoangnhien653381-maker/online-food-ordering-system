@@ -1,11 +1,12 @@
 {
   "name": "food-ordering-auth",
   "version": "1.0.0",
-  "description": "Module đăng ký và đăng nhập - Hệ thống đặt đồ ăn trực tuyến",
+  "description": "Module xác thực và kiểm thử đơn vị - Hệ thống đặt đồ ăn trực tuyến",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -14,5 +15,20 @@
   "devDependencies": {
     "jest": "^29.7.0",
     "supertest": "^7.0.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "services/orderTotal.js",
+      "services/cart.js",
+      "services/payment.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 70,
+        "branches": 60,
+        "functions": 70,
+        "lines": 70
+      }
+    }
   }
 }
